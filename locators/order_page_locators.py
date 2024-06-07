@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
-from locators.base_page_locators import StellarBurgerBasePageLocators
 
 
-class StellarBurgerOrderPageLocators(StellarBurgerBasePageLocators):
+
+class StellarBurgerOrderPageLocators:
     SECOND_ORDER = [By.XPATH, ".//ul[@class='OrderFeed_list__OLh59']/li[2]"] # Лист ингредиентов
     MODAL_ORDER_WINDOW = [By.XPATH, ".//div[contains(@class, 'Modal_orderBox')]"] # Модальное окно заказа
     # История заказов в лк пользователя

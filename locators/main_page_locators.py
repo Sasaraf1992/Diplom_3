@@ -16,4 +16,6 @@ class StellarBurgerMainPageLocators:
     CREATE_ORDER = (By.XPATH, ".//button[contains(text(), 'Оформить заказ')]") # Кнопка оформить заказ"
     SUCCESSFUL_ORDER_WINDOW = [By.XPATH, ".//section[contains(@class, 'Modal_modal_opened')]"] # Модальное окно созданного заказа
     MODAL_WINDOW_ORDER_NUMBER = [By.XPATH, './/h2[contains(@class, "Modal_modal__title_shadow")]'] # Номер заказа в модальном окне
-    MODAL_WINDOW_CLOSE_BUTTON = [By.XPATH, './/button[contains(@class, "Modal_modal__close")]'] # Кнопка "Закрыть" в модальном окне созданного заказа
+    MODAL_WINDOW_CLOSE_BUTTON = [By.XPATH, '//button[contains(@class, "Modal_modal__close")]'] # Кнопка "Закрыть" в модальном окне созданного заказа
+    MODAL_OVERLAY = (By.CSS_SELECTOR, '.Modal_modal__P3_V5[style="visibility: hidden;"]')
+    IMG_LOADING = [By.CSS_SELECTOR, '.Modal_modal__loading__3534A']

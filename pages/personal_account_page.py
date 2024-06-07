@@ -9,17 +9,21 @@ from pages.base_page import BasePage
 class StellarBurgerPersonalAccountPage(BasePage):
     @allure.step("Клик на кнопку История заказов")
     def click_order_history_button(self):
-        self.driver.find_element(*PA.ORDER_HISTORY_BUTTON).click()
+        self.find_element_with_click(PA.ORDER_HISTORY_BUTTON)
 
-    @allure.step("Заполнение поля Email")
-    def wait_until_exit_button_show(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(PA.EXIT_BUTTON))
+
     @allure.step("Клик на кнопку Выйти из аккаунта")
     def click_exit_button(self):
-        self.driver.find_element(*PA.EXIT_BUTTON).click()
+        self.find_element_with_click(PA.EXIT_BUTTON)
+
+    @allure.step("Ждём пока покажется кнопка История заказов")
+    def wait_until_history_button_show(self):
+        self.wait_until_element_visibility_located(PA.ORDER_HISTORY_BUTTON)
 
     @allure.step("Получение номера последнего заказа пользователя")
     def get_user_last_order_number(self):
-        order = self.driver.find_element(*PA.USER_ORDERS_HISTORY).text
-        return order
+        return self.get_element_text(PA.USER_ORDERS_HISTORY)
+
+    @allure.step("Ждём пока появится последний заказ")
+    def wait_until_user_last_order_show(self):
+        self.wait_until_element_visibility_located(PA.USER_ORDERS_HISTORY)

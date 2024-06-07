@@ -7,16 +7,16 @@ class StellarBurgerLoginPage(BasePage):
 
     @allure.step("Клик на кнопку Восстановить пароль")
     def click_restore_button(self):
-        self.driver.find_element(*RL.RESTORE_PASSWORD_BUTTON).click()
+        self.find_element_with_click(RL.RESTORE_PASSWORD_BUTTON)
 
     @allure.step("Заполнение поля Email")
     def email_field_fill(self, email):
-        self.driver.find_element(*RL.EMAIL_FIELD).send_keys(email)
+        self.send_keys_element(RL.EMAIL_FIELD, email)
 
     @allure.step("Заполнение поля Пароль")
     def password_field_fill(self, password):
-        self.driver.find_element(*RL.PASSWORD_FIELD).send_keys(password)
+        self.send_keys_element(RL.PASSWORD_FIELD, password)
 
     @allure.step("Клик на кнопку Логин")
     def click_login_button(self):
-        self.driver.find_element(*RL.LOGIN_BUTTON).click()
+        self.find_element_with_click(RL.LOGIN_BUTTON)

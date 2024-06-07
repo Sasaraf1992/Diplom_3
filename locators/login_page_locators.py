@@ -1,8 +1,7 @@
 from selenium.webdriver.common.by import By
-from locators.base_page_locators import StellarBurgerBasePageLocators
 
 
-class StellarBurgerRegistrationLocators():
+class StellarBurgerRegistrationLocators:
     RESTORE_PASSWORD_BUTTON = [By.XPATH, "//a[text() = 'Восстановить пароль']"] # Кнопа "Восстановить пароль
     EMAIL_FIELD = [By.XPATH, '//input[@type="text"]'] # Поле "Email"
     PASSWORD_FIELD = [By.XPATH, '//input[@type="password"]'] # Поле "Пароль"
