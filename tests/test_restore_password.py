@@ -1,0 +1,44 @@
+import settings
+import allure
+from pages.login_page import StellarBurgerLoginPage
+from pages.restore_page import StellarBurgersRestorePage
+from pages.main_page import StellarBurgerMainPage
+
+class TestRestorePassword:
+    @allure.title("Тест перехода на страницу восстановления пароля по клику на кнопку Восстановить пароль")
+    def test_transition_on_restore_password_page_by_button_click(self, driver):
+        lp = StellarBurgerLoginPage(driver)
+        mp = StellarBurgerMainPage(driver)
+        mp.click_account_button_in_header()
+        lp.click_restore_button()
+        forgot_password_page = settings.URL_FORGOT_PASSWORD_PAGE
+        lp.wait_until_url_contains(forgot_password_page)
+        assert mp.current_url_page() == forgot_password_page
+
+    @allure.title("Тест успешного ввода почты и клика по кнопке Восстановить")
+    def test_restore_button_active(self, driver, fake_user):
+        email = fake_user
+        mp = StellarBurgerMainPage(driver)
+        lp = StellarBurgerLoginPage(driver)
+        mp.click_account_button_in_header()
+        lp.click_restore_button()
+        rp = StellarBurgersRestorePage(driver)
+        rp.filling_out_restore_password_email_field(email)
+        rp.click_restore_button()
+        reset_password_page = settings.URL_RESET_PASSWORD_PAGE
+        rp.wait_until_url_contains(reset_password_page)
+        assert mp.current_url_page() == reset_password_page
+
+    @allure.title("Тест подсвечивания поля при клике на кнопку показать/скрыть пароль")
+    def test_restore_password_field_active(self, driver, fake_user):
+        email = fake_user
+        mp = StellarBurgerMainPage(driver)
+        lp = StellarBurgerLoginPage(driver)
+        mp.click_account_button_in_header()
+        lp.click_restore_button()
+        rp = StellarBurgersRestorePage(driver)
+        rp.filling_out_restore_password_email_field(email)
+        rp.click_restore_button()
+        rp.wait_until_eye_show()
+        rp.click_inactive_eye_button()
+        assert rp.restore_password_field_is_active()
