@@ -8,5 +8,3 @@ class StellarBurgerTestData:
                  "password": fake.password(),
                  "name": fake.user_name()
                  }
-
-    FAKE_USER
